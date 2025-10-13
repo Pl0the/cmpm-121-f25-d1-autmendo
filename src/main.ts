@@ -11,10 +11,14 @@ interface Item {
   description: string;
 }
 
-const clickSound = new Audio("/cmpm-121-f25-d1-autmendo/src/mixkit-cool-interface-click-tone-2568.wav");
+const clickSound = new Audio(
+  "/cmpm-121-f25-d1-autmendo/src/mixkit-cool-interface-click-tone-2568.wav",
+);
 clickSound.volume = 1;
 
-const music = new Audio("/cmpm-121-f25-d1-autmendo/src/scary-horror-music-351315.mp3");
+const music = new Audio(
+  "/cmpm-121-f25-d1-autmendo/src/scary-horror-music-351315.mp3",
+);
 music.volume = 0.04;
 music.loop = true;
 
@@ -64,7 +68,8 @@ const availableItems: Item[] = [
 ];
 
 document.body.style.textAlign = "center";
-document.body.style.backgroundImage = "url('/cmpm-121-f25-d1-autmendo/src/thumb-1920-699366.jpg')";
+document.body.style.backgroundImage =
+  "url('/cmpm-121-f25-d1-autmendo/src/thumb-1920-699366.jpg')";
 document.body.style.backgroundSize = "cover";
 
 document.body.style.color = "white";
