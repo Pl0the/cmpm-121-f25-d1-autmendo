@@ -10,6 +10,9 @@ let costB: number = 100;
 let ownedC: number = 0;
 let costC: number = 1000;
 
+const clickSound = new Audio("./src/mixkit-cool-interface-click-tone-2568.wav");
+clickSound.volume = 1;
+
 const button = document.createElement("button");
 button.textContent = "💀";
 button.style.fontSize = "8em";
@@ -54,6 +57,8 @@ UpgradeC.disabled = true;
 button.addEventListener("click", () => {
   counter += 1;
   updateDisplay();
+  clickSound.currentTime = 0;
+  clickSound.play();
 });
 
 function UpgradeAFunc() {
