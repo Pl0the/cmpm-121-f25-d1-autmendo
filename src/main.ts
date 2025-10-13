@@ -61,7 +61,7 @@ function UpgradeAFunc() {
     counter -= costA;
     ownedA += 1;
     SoulsPS += 0.1;
-    costA = Math.floor(costA * 2);
+    costA = Math.floor(costA * 1.15);
     upgradeA.innerText =
       `Buy Soul-sickle | Cost: ${costA} Souls | Owned: ${ownedA}`;
     updateDisplay();
@@ -73,7 +73,7 @@ function UpgradeBFunc() {
     counter -= costB;
     ownedB += 1;
     SoulsPS += 2.0;
-    costB = Math.floor(costB * 2);
+    costB = Math.floor(costB * 1.15);
     UpgradeB.innerText =
       `Buy Soul Factory | Cost: ${costB} Souls | Owned: ${ownedB}`;
     updateDisplay();
@@ -85,7 +85,7 @@ function UpgradeCFunc() {
     counter -= costC;
     ownedC += 1;
     SoulsPS += 50.0;
-    costC = Math.floor(costC * 2);
+    costC = Math.floor(costC * 1.15);
     UpgradeC.innerText =
       `Buy Grim Reaper | Cost: ${costC} Souls | Owned: ${ownedC}`;
     updateDisplay();
