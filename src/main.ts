@@ -11,8 +11,12 @@ interface Item {
   description: string;
 }
 
-const clickSound = new Audio("./src/mixkit-cool-interface-click-tone-2568.wav");
+const clickSound = new Audio("/src/mixkit-cool-interface-click-tone-2568.wav");
 clickSound.volume = 1;
+
+const music = new Audio("/src/scary-horror-music-351315.mp3");
+music.volume = 0.04;
+music.loop = true;
 
 const availableItems: Item[] = [
   {
@@ -57,6 +61,7 @@ document.body.style.backgroundImage = "url('./src/thumb-1920-699366.jpg')";
 document.body.style.backgroundSize = "cover";
 
 document.body.style.color = "white";
+document.body.style.textShadow = "4px 4px 4px #2003dbff";
 
 const buttonImage = document.createElement("img");
 buttonImage.src = "./src/blue-skull.jpg";
@@ -92,6 +97,9 @@ availableItems.forEach((item) => {
   const itemButton = document.createElement("button");
   itemButton.style.fontSize = "2em";
   itemButton.style.cursor = "pointer";
+
+  itemButton.style.border = "3px solid black";
+
   itemButton.innerText =
     `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
   itemButton.disabled = true;
@@ -126,6 +134,7 @@ button.addEventListener("click", () => {
     counterText.innerText = "Souls: " + counter.toFixed(2);
     firstClick = false;
     requestAnimationFrame(autoClick);
+    music.play();
   } else {
     updateDisplay();
   }
