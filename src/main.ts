@@ -15,11 +15,41 @@ const clickSound = new Audio("./src/mixkit-cool-interface-click-tone-2568.wav");
 clickSound.volume = 1;
 
 const availableItems: Item[] = [
-  { name: "Soul-sickle", cost: 10, owned: 0, soulsPerSecond: 0.1, description: "A simple tool to harvest souls" },
-  { name: "Soul Factory", cost: 100, owned: 0, soulsPerSecond: 2.0, description: "A Factory that mass harvests souls" },
-  { name: "Grim Reaper", cost: 1000, owned: 0, soulsPerSecond: 50.0, description: "The Iconic Soul Reaper" },
-  { name: "Soul Tyrant", cost: 10000, owned: 0, soulsPerSecond: 200.0, description: "A Powerful Overlord of Soul Harvesting" },
-  { name: "Soul God", cost: 100000, owned: 0, soulsPerSecond: 1000.0, description: "The ultimate being of souls." },
+  {
+    name: "Soul-sickle",
+    cost: 10,
+    owned: 0,
+    soulsPerSecond: 0.1,
+    description: "A simple tool to harvest souls",
+  },
+  {
+    name: "Soul Factory",
+    cost: 100,
+    owned: 0,
+    soulsPerSecond: 2.0,
+    description: "A Factory that mass harvests souls",
+  },
+  {
+    name: "Grim Reaper",
+    cost: 1000,
+    owned: 0,
+    soulsPerSecond: 50.0,
+    description: "The Iconic Soul Reaper",
+  },
+  {
+    name: "Soul Tyrant",
+    cost: 10000,
+    owned: 0,
+    soulsPerSecond: 200.0,
+    description: "A Powerful Overlord of Soul Harvesting",
+  },
+  {
+    name: "Soul God",
+    cost: 100000,
+    owned: 0,
+    soulsPerSecond: 1000.0,
+    description: "The ultimate being of souls.",
+  },
 ];
 
 document.body.style.textAlign = "center";
@@ -43,7 +73,6 @@ button.style.cursor = "pointer";
 button.appendChild(buttonImage);
 document.body.appendChild(button);
 
-
 const counterText = document.createElement("div");
 counterText.style.fontSize = "3em";
 counterText.innerText = "Click the Blue Skull above to begin harvesting.";
@@ -63,7 +92,8 @@ availableItems.forEach((item) => {
   const itemButton = document.createElement("button");
   itemButton.style.fontSize = "2em";
   itemButton.style.cursor = "pointer";
-  itemButton.innerText = `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
+  itemButton.innerText =
+    `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
   itemButton.disabled = true;
 
   const itemDesc = document.createElement("div");
