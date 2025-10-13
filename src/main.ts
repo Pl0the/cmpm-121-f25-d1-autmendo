@@ -1,52 +1,78 @@
 let counter: number = 0;
 let SoulsPS: number = 0;
 
+let firstClick = true;
+
 interface Item {
   name: string;
   cost: number;
   owned: number;
   soulsPerSecond: number;
+  description: string;
 }
 
 const clickSound = new Audio("./src/mixkit-cool-interface-click-tone-2568.wav");
 clickSound.volume = 1;
 
 const availableItems: Item[] = [
-  { name: "Soul-sickle", cost: 10, owned: 0, soulsPerSecond: 0.1 },
-  { name: "Soul Factory", cost: 100, owned: 0, soulsPerSecond: 2.0 },
-  { name: "Grim Reaper", cost: 1000, owned: 0, soulsPerSecond: 50.0 },
+  { name: "Soul-sickle", cost: 10, owned: 0, soulsPerSecond: 0.1, description: "A simple tool to harvest souls" },
+  { name: "Soul Factory", cost: 100, owned: 0, soulsPerSecond: 2.0, description: "A Factory that mass harvests souls" },
+  { name: "Grim Reaper", cost: 1000, owned: 0, soulsPerSecond: 50.0, description: "The Iconic Soul Reaper" },
+  { name: "Soul Tyrant", cost: 10000, owned: 0, soulsPerSecond: 200.0, description: "A Powerful Overlord of Soul Harvesting" },
+  { name: "Soul God", cost: 100000, owned: 0, soulsPerSecond: 1000.0, description: "The ultimate being of souls." },
 ];
 
+document.body.style.textAlign = "center";
+document.body.style.backgroundImage = "url('./src/thumb-1920-699366.jpg')";
+document.body.style.backgroundSize = "cover";
+
+document.body.style.color = "white";
+
+const buttonImage = document.createElement("img");
+buttonImage.src = "./src/blue-skull.jpg";
+buttonImage.style.width = "20em";
+buttonImage.style.height = "25m";
+buttonImage.style.verticalAlign = "middle";
+buttonImage.style.border = "5px solid blue";
+
 const button = document.createElement("button");
-button.textContent = "💀";
-button.style.fontSize = "8em";
-button.style.padding = "0.2em 0.4em";
-button.style.borderRadius = "0.2em";
-button.style.marginLeft = "42%";
+button.style.border = "none";
+button.style.background = "none";
+button.style.cursor = "pointer";
+
+button.appendChild(buttonImage);
 document.body.appendChild(button);
+
 
 const counterText = document.createElement("div");
 counterText.style.fontSize = "3em";
-counterText.innerText = "Click to reap souls";
-counterText.style.marginLeft = "40%";
+counterText.innerText = "Click the Blue Skull above to begin harvesting.";
 document.body.appendChild(counterText);
 
 const SPSText = document.createElement("div");
 SPSText.style.fontSize = "2em";
 SPSText.innerText = "Souls per second: 0";
-SPSText.style.marginLeft = "43.5%";
 document.body.appendChild(SPSText);
 
 const itemButtons: HTMLButtonElement[] = [];
 
 availableItems.forEach((item) => {
+  const itemContainer = document.createElement("div");
+  itemContainer.style.fontSize = "1.3em";
+
   const itemButton = document.createElement("button");
   itemButton.style.fontSize = "2em";
-  itemButton.innerText =
-    `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
-  itemButton.style.marginLeft = "30%";
-  document.body.appendChild(itemButton);
+  itemButton.style.cursor = "pointer";
+  itemButton.innerText = `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
   itemButton.disabled = true;
+
+  const itemDesc = document.createElement("div");
+  itemDesc.style.fontSize = "1.2em";
+  itemDesc.innerText = item.description;
+
+  itemContainer.appendChild(itemButton);
+  itemContainer.appendChild(itemDesc);
+  document.body.appendChild(itemContainer);
 
   itemButton.addEventListener("click", () => {
     if (counter >= item.cost) {
@@ -65,16 +91,21 @@ availableItems.forEach((item) => {
 
 button.addEventListener("click", () => {
   counter += 1;
-  updateDisplay();
+
+  if (firstClick) {
+    counterText.innerText = "Souls: " + counter.toFixed(2);
+    firstClick = false;
+    requestAnimationFrame(autoClick);
+  } else {
+    updateDisplay();
+  }
   clickSound.currentTime = 0;
   clickSound.play();
 });
 
 function updateDisplay() {
   counterText.innerText = "Souls: " + counter.toFixed(2);
-  counterText.style.marginLeft = "43%";
   SPSText.innerText = "Souls per second: " + SoulsPS.toFixed(1);
-  SPSText.style.marginLeft = "42%";
 
   itemButtons.forEach((btn, idx) => {
     btn.disabled = counter < availableItems[idx].cost;
@@ -92,5 +123,3 @@ function autoClick(curr: number) {
 
   requestAnimationFrame(autoClick);
 }
-
-requestAnimationFrame(autoClick);
