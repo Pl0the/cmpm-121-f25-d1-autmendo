@@ -60,7 +60,7 @@ const availableItems: Item[] = [
     owned: 0,
     soulsPerSecond: 5000.0,
     description: "Allows you to click for your Souls per second.",
-  }
+  },
 ];
 
 document.body.style.textAlign = "center";
@@ -183,10 +183,7 @@ function updateDisplay() {
       btn.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
       btn.style.color = "rgba(221, 216, 216, 0.8)";
     }
-
   });
-
-  
 }
 
 let last = performance.now();
