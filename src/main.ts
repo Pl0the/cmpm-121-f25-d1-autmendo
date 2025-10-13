@@ -54,6 +54,13 @@ const availableItems: Item[] = [
     soulsPerSecond: 1000.0,
     description: "The ultimate being of souls.",
   },
+  {
+    name: "The Everlasting Soul",
+    cost: 1000000,
+    owned: 0,
+    soulsPerSecond: 5000.0,
+    description: "Allows you to click for your Souls per second.",
+  }
 ];
 
 document.body.style.textAlign = "center";
@@ -98,7 +105,9 @@ availableItems.forEach((item) => {
   itemButton.style.fontSize = "2em";
   itemButton.style.cursor = "pointer";
 
-  itemButton.style.border = "3px solid black";
+  itemButton.style.border = "3px solid blue";
+  itemButton.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+  itemButton.style.color = "rgba(221, 216, 216, 0.8)";
 
   itemButton.innerText =
     `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
@@ -121,11 +130,24 @@ availableItems.forEach((item) => {
       itemButton.innerText =
         `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
       updateDisplay();
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
   });
 
   itemButtons.push(itemButton);
 });
+
+function shakeButton() {
+  button.style.transition = "transform 0.1s";
+  button.style.transform = "translate(5px, 0) rotate(10deg)";
+  setTimeout(() => {
+    button.style.transform = "translate(-5px, 0) rotate(-10deg)";
+    setTimeout(() => {
+      button.style.transform = "translate(0, 0) rotate(0deg)";
+    }, 100);
+  }, 100);
+}
 
 button.addEventListener("click", () => {
   counter += 1;
@@ -140,6 +162,7 @@ button.addEventListener("click", () => {
   }
   clickSound.currentTime = 0;
   clickSound.play();
+  shakeButton();
 });
 
 function updateDisplay() {
@@ -147,8 +170,23 @@ function updateDisplay() {
   SPSText.innerText = "Souls per second: " + SoulsPS.toFixed(1);
 
   itemButtons.forEach((btn, idx) => {
-    btn.disabled = counter < availableItems[idx].cost;
+    const item = availableItems[idx];
+    const canBuy = counter >= item.cost;
+
+    btn.disabled = !canBuy;
+
+    if (canBuy) {
+      btn.style.border = "3px solid white";
+      btn.style.color = "white";
+    } else {
+      btn.style.border = "3px solid blue";
+      btn.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+      btn.style.color = "rgba(221, 216, 216, 0.8)";
+    }
+
   });
+
+  
 }
 
 let last = performance.now();
