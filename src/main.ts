@@ -42,7 +42,8 @@ const itemButtons: HTMLButtonElement[] = [];
 availableItems.forEach((item) => {
   const itemButton = document.createElement("button");
   itemButton.style.fontSize = "2em";
-  itemButton.innerText = `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
+  itemButton.innerText =
+    `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
   itemButton.style.marginLeft = "30%";
   document.body.appendChild(itemButton);
   itemButton.disabled = true;
@@ -53,7 +54,8 @@ availableItems.forEach((item) => {
       item.owned += 1;
       SoulsPS += item.soulsPerSecond;
       item.cost = Math.floor(item.cost * 1.15);
-      itemButton.innerText = `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
+      itemButton.innerText =
+        `Buy ${item.name} | Cost: ${item.cost} Souls | Owned: ${item.owned}`;
       updateDisplay();
     }
   });
