@@ -11,10 +11,10 @@ interface Item {
   description: string;
 }
 
-const clickSound = new Audio("/src/mixkit-cool-interface-click-tone-2568.wav");
+const clickSound = new Audio("src/mixkit-cool-interface-click-tone-2568.wav");
 clickSound.volume = 1;
 
-const music = new Audio("/src/scary-horror-music-351315.mp3");
+const music = new Audio("src/scary-horror-music-351315.mp3");
 music.volume = 0.04;
 music.loop = true;
 
@@ -64,14 +64,14 @@ const availableItems: Item[] = [
 ];
 
 document.body.style.textAlign = "center";
-document.body.style.backgroundImage = "url('./src/thumb-1920-699366.jpg')";
+document.body.style.backgroundImage = "url('src/thumb-1920-699366.jpg')";
 document.body.style.backgroundSize = "cover";
 
 document.body.style.color = "white";
 document.body.style.textShadow = "4px 4px 4px #2003dbff";
 
 const buttonImage = document.createElement("img");
-buttonImage.src = "./src/blue-skull.jpg";
+buttonImage.src = "src/blue-skull.jpg";
 buttonImage.style.width = "20em";
 buttonImage.style.height = "25m";
 buttonImage.style.verticalAlign = "middle";
