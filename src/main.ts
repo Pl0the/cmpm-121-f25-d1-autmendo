@@ -11,14 +11,15 @@ interface Item {
   description: string;
 }
 
-const clickSound = new Audio(
-  "/cmpm-121-f25-d1-autmendo/src/mixkit-cool-interface-click-tone-2568.wav",
-);
+import clickSoundUrl from "./mixkit-cool-interface-click-tone-2568.wav";
+import musicUrl from "./scary-horror-music-351315.mp3";
+import skullImageUrl from "./blue-skull.jpg";
+import bgImageUrl from "./thumb-1920-699366.jpg";
+
+const clickSound = new Audio(clickSoundUrl);
 clickSound.volume = 1;
 
-const music = new Audio(
-  "/cmpm-121-f25-d1-autmendo/src/scary-horror-music-351315.mp3",
-);
+const music = new Audio(musicUrl);
 music.volume = 0.04;
 music.loop = true;
 
@@ -68,15 +69,14 @@ const availableItems: Item[] = [
 ];
 
 document.body.style.textAlign = "center";
-document.body.style.backgroundImage =
-  "url('/cmpm-121-f25-d1-autmendo/src/thumb-1920-699366.jpg')";
+document.body.style.backgroundImage = `url(${bgImageUrl})`;
 document.body.style.backgroundSize = "cover";
 
 document.body.style.color = "white";
 document.body.style.textShadow = "4px 4px 4px #2003dbff";
 
 const buttonImage = document.createElement("img");
-buttonImage.src = "/cmpm-121-f25-d1-autmendo/src/blue-skull.jpg";
+buttonImage.src = skullImageUrl;
 buttonImage.style.width = "20em";
 buttonImage.style.height = "25m";
 buttonImage.style.verticalAlign = "middle";
