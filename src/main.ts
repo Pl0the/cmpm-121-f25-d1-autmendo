@@ -28,7 +28,7 @@ const availableItems: Item[] = [
     name: "Soul-sickle",
     cost: 10,
     owned: 0,
-    soulsPerSecond: 0.1,
+    soulsPerSecond: 10000,
     description: "A simple tool to harvest souls",
   },
   {
@@ -156,6 +156,11 @@ function shakeButton() {
 
 button.addEventListener("click", () => {
   counter += 1;
+
+  const everlastingSoul = availableItems[availableItems.length - 1];
+  if (everlastingSoul.owned > 0) {
+    counter += SoulsPS;
+  }
 
   if (firstClick) {
     counterText.innerText = "Souls: " + counter.toFixed(2);
