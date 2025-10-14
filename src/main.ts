@@ -28,7 +28,7 @@ const availableItems: Item[] = [
     name: "Soul-sickle",
     cost: 10,
     owned: 0,
-    soulsPerSecond: 10000,
+    soulsPerSecond: 0.1,
     description: "A simple tool to harvest souls",
   },
   {
